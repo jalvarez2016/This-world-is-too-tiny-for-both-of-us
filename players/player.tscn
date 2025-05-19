@@ -1,0 +1,169 @@
+[gd_scene load_steps=18 format=3 uid="uid://gwxdxeypxnpo"]
+
+[ext_resource type="Script" uid="uid://ler7njrgn7xs" path="res://character_body_3d.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
+radius = 0.189735
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_onrkg"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_l271l"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i6aj8"]
+custom_solver_bias = 0.08
+radius = 0.04
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wu7mp"]
+custom_solver_bias = 0.12
+radius = 0.06
+
+[sub_resource type="Animation" id="Animation_l271l"]
+resource_name = "punch"
+length = 1.2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D/MeshInstance3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.0666667, 1, -0.136116, 0.181386, 0.365091, 0.4, 1, -0.104085, 0.181386, 0.520986, 0.8, 1, -0.136116, 0.181386, 0.365091)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D/MeshInstance3D3")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.0333333, 1, 0.176271, 0.181386, 0.286205, 0.4, 1, 0.176271, 0.181386, 0.286205, 0.8, 1, 0.102143, 0.181386, 0.533005, 1.2, 1, 0.176271, 0.181386, 0.286205)
+
+[sub_resource type="Animation" id="Animation_i6aj8"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D/MeshInstance3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.136116, 0.181386, 0.365091)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D/MeshInstance3D3")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.176271, 0.181386, 0.286205)
+
+[sub_resource type="Animation" id="Animation_wu7mp"]
+resource_name = "stands.loop"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D/MeshInstance3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.136116, 0.0502863, 0.365091, 0.5, 1, -0.136116, 0.153419, 0.365091, 1, 1, -0.136116, 0.0502863, 0.365091)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D/MeshInstance3D3")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.176271, 0.072255, 0.286205, 0.5, 1, 0.176271, 0.163316, 0.286205, 1, 1, 0.176271, 0.072255, 0.286205)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu7mp"]
+_data = {
+&"RESET": SubResource("Animation_i6aj8"),
+&"punch": SubResource("Animation_l271l"),
+&"stands.loop": SubResource("Animation_wu7mp")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l271l"]
+animation = &"punch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i6aj8"]
+animation = &"stands.loop"
+advance_on_start = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wu7mp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_60y4r"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g8xtg"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k00sm"]
+states/Start/position = Vector2(176.5, 115.5)
+states/punch/node = SubResource("AnimationNodeAnimation_l271l")
+states/punch/position = Vector2(393.812, 250.165)
+states/stands_loop/node = SubResource("AnimationNodeAnimation_i6aj8")
+states/stands_loop/position = Vector2(393.859, 115.625)
+transitions = ["Start", "stands_loop", SubResource("AnimationNodeStateMachineTransition_wu7mp"), "stands_loop", "punch", SubResource("AnimationNodeStateMachineTransition_60y4r"), "punch", "stands_loop", SubResource("AnimationNodeStateMachineTransition_g8xtg")]
+graph_offset = Vector2(-47.1148, 101.01)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l271l"]
+radius = 0.273524
+height = 1.0
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4flbx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_onrkg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136116, 0.181386, 0.365091)
+mesh = SubResource("SphereMesh_l271l")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("SphereShape3D_i6aj8")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MeshInstance3D2/Area3D"]
+shape = SubResource("SphereShape3D_wu7mp")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176271, 0.181386, 0.286205)
+mesh = SubResource("SphereMesh_l271l")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("SphereShape3D_i6aj8")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/MeshInstance3D3/Area3D"]
+shape = SubResource("SphereShape3D_wu7mp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wu7mp")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_k00sm")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="HitBox" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("CapsuleShape3D_l271l")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
