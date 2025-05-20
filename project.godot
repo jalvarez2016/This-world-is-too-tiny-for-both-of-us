@@ -23,7 +23,7 @@ window/size/mode=2
 
 player_two_fist=""
 player_one_fist=""
-player_one=""
+health_pack=""
 
 [input]
 

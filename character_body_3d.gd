@@ -12,14 +12,15 @@ extends CharacterBody3D
 
 @export var gravity := 10.0
 
-const SPEED = 1.0
-const jump_force = 3
+var SPEED = 7.0
+var jump_force = 7
 var angular_acceleration := 5
 var health = 100
+var current_status = "rest"
 
 var enemy_fist = null
 var player_keys = [null]
-var current_group = null
+var current_scale = 4
 
 
 func _physics_process(delta: float) -> void:
@@ -47,21 +48,55 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	if Input.is_action_just_pressed(player_keys[5]):
+		
 		state_machine.travel("punch")
+		right_fist.setStatus("punching")
+		print(right_fist.current_status)
 	
 	move_and_slide()
-		
+
+func gobackToRest():
+	right_fist.setStatus("rest")
+	print(right_fist.current_status)
+
 func setPlayerKeys(player_keys_list, fist_group, enemy_fist_group):
+	left_fist = $MeshInstance3D/MeshInstance3D3/Area3D
+	right_fist = $MeshInstance3D/MeshInstance3D2/Area3D
 	player_keys = player_keys_list
-	
-	current_group = fist_group
-
 	enemy_fist = enemy_fist_group
+	left_fist.add_to_group(fist_group)
 	
 
-
+func heal():
+	if health <= 84:
+			
+			if health + 16 > 100:
+				health = 100
+			else:
+				health += 16
+			current_scale += .3
+			scale = Vector3(current_scale,current_scale,current_scale)
+	else:
+		health = health
+	
 func _on_hit_box_area_entered(area: Area3D) -> void:
-	if area.is_in_group(enemy_fist):
-		health -= 10
-		print(current_group, health)
-	pass # Replace with function body.
+	
+		
+	if area.is_in_group(enemy_fist) and area.current_status == "punching":
+		health -= 4
+		current_scale -= 0.1
+		if current_scale == 3:
+			SPEED = 6.0
+			jump_force = 6
+		
+		if current_scale == 2:
+			SPEED = 4.0
+			jump_force = 4
+			
+		if current_scale == 3:
+			SPEED = 3.0
+			jump_force = 3
+		scale = Vector3(current_scale,current_scale,current_scale)
+		if current_scale <= 0.3:
+			queue_free()
+	
