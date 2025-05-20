@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://crtx2bug0v0ab"]
+
+[ext_resource type="Script" uid="uid://bvmsjjvovdcq" path="res://world test/world.gd" id="1_2hu7o"]
+[ext_resource type="Script" uid="uid://jti6ts8aejho" path="res://world test/health_pack_spawn.gd" id="2_2hu7o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4kpw4"]
+size = Vector3(12, 0.2, 12)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dbbrg"]
+data = PackedVector3Array(-6, 0.1, 6, 6, 0.1, 6, -6, -0.1, 6, 6, 0.1, 6, 6, -0.1, 6, -6, -0.1, 6, 6, 0.1, -6, -6, 0.1, -6, 6, -0.1, -6, -6, 0.1, -6, -6, -0.1, -6, 6, -0.1, -6, 6, 0.1, 6, 6, 0.1, -6, 6, -0.1, 6, 6, 0.1, -6, 6, -0.1, -6, 6, -0.1, 6, -6, 0.1, -6, -6, 0.1, 6, -6, -0.1, -6, -6, 0.1, 6, -6, -0.1, 6, -6, -0.1, -6, 6, 0.1, 6, -6, 0.1, 6, 6, 0.1, -6, -6, 0.1, 6, -6, 0.1, -6, 6, 0.1, -6, -6, -0.1, 6, 6, -0.1, 6, -6, -0.1, -6, 6, -0.1, 6, 6, -0.1, -6, -6, -0.1, -6)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_2hu7o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.845467, 0.534028, 0, -0.534028, 0.845467, 0.365454, 11.731, 13.3869)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4kpw4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dbbrg")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.99591, 1.75213)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.99591, -1.21291)
+
+[node name="HealthPackSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="HealthPackSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.4375, 0)
+script = ExtResource("2_2hu7o")
+
+[node name="Marker3D3" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(0.568695, 0.735388, -0.368497, -0.617153, 0.677646, 0.399896, 0.54379, 0, 0.839221, -2.78402, -0.224487, 0.197801)
+
+[node name="Marker3D4" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(0.568695, 0.735388, -0.368497, -0.617153, 0.677646, 0.399896, 0.54379, 0, 0.839221, 3.02705, 0.224487, -2.91857)
+
+[node name="Marker3D5" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(0.925077, 0, 0.379779, 0, 1, 0, -0.379779, 0, 0.925077, -2.65439, 0, -3.22566)
+
+[node name="Marker3D6" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(0.925077, 0, 0.379779, 0, 1, 0, -0.379779, 0, 0.925077, -4.59318, 0, 0.567262)
+
+[node name="Marker3D7" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(0.568695, 0.735388, -0.368497, -0.617153, 0.677646, 0.399896, 0.54379, 0, 0.839221, -3.82349, -0.224487, 0.197801)
+
+[node name="Marker3D8" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(0.568695, 0.735388, -0.368497, -0.617153, 0.677646, 0.399896, 0.54379, 0, 0.839221, -0.761724, 0.224487, -0.197801)
+
+[node name="Marker3D9" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(0.925077, 0, 0.379779, 0, 1, 0, -0.379779, 0, 0.925077, 2.22714, 0, 0.290976)
+
+[node name="Marker3D10" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(0.925077, 0, 0.379779, 0, 1, 0, -0.379779, 0, 0.925077, 3.04777, 0, 3.3054)
+
+[node name="Marker3D11" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(-0.779287, -0.45614, -0.429706, -0.617153, 0.677646, 0.399896, 0.10878, 0.576828, -0.80959, -0.636415, -0.224487, 2.50724)
+
+[node name="Marker3D12" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(-0.779287, -0.45614, -0.429706, -0.617153, 0.677646, 0.399896, 0.10878, 0.576828, -0.80959, -0.0694896, 0.224487, 4.45712)
+
+[node name="Marker3D13" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(-0.275906, 0, -0.961185, 0, 1, 0, 0.961185, 0, -0.275906, -0.789907, 0, 2.55113)
+
+[node name="Marker3D14" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(-0.275906, 0, -0.961185, 0, 1, 0, 0.961185, 0, -0.275906, -2.97157, 0, 1.85187)
+
+[node name="Marker3D15" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(-0.779287, -0.45614, -0.429706, -0.617153, 0.677646, 0.399896, 0.10878, 0.576828, -0.80959, 0.00833751, -0.224487, 1.69189)
+
+[node name="Marker3D16" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(-0.779287, -0.45614, -0.429706, -0.617153, 0.677646, 0.399896, 0.10878, 0.576828, -0.80959, 3.70793, 0.224487, -1.70805)
+
+[node name="Marker3D17" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(-0.275906, 0, -0.961185, 0, 1, 0, 0.961185, 0, -0.275906, -2.34006, 0, 3.7648)
+
+[node name="Marker3D18" type="Marker3D" parent="HealthPackSpawn"]
+transform = Transform3D(-0.275906, 0, -0.961185, 0, 1, 0, 0.961185, 0, -0.275906, 0.0555642, 0, -3.08883)
+
+[connection signal="timeout" from="HealthPackSpawnTimer" to="HealthPackSpawn" method="_on_health_pack_spawn_timer_timeout"]
