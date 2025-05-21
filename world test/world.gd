@@ -1,4 +1,5 @@
 extends Node3D
+@export var camera_setup_timer: Timer
 #"ui_left", "ui_right", "ui_up", "ui_down"
 @onready var scene = load("res://players/player.tscn")
 
@@ -23,4 +24,5 @@ func _ready() -> void:
 	player_two.scale = Vector3(4,4,4)
 	add_child(player_two)
 
+	camera_setup_timer.start()
 	#player_one.setPlayerKeys("ui_left_two", "ui_right_two", "ui_up_two", "ui_down_two")
