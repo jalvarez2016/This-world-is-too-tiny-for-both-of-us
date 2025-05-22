@@ -12,11 +12,11 @@ func _process(_delta: float) -> void:
 		)
 		var player_distance_vector: Vector3 =  player_positions[0] - player_positions[1]
 		var player_distance_float : float = abs(player_distance_vector.distance_to(Vector3.ZERO))
-		var zOffset = 0.0
 		var midpoint : Vector3 = (player_distance_vector / 2) + player_positions[1]
+		var zOffset = midpoint.z
 		if player_distance_float > 5:
-			phantom_camera.global_position.y = (player_distance_float / 2) + 10
-			zOffset = midpoint.z + 25
+			phantom_camera.global_position.y = (player_distance_float / 2) + 25
+			zOffset = midpoint.z * 1.5
 		else:
 			phantom_camera.global_position.y = 15
 		#lerp(midpoint.z, max_distance, _delta)
