@@ -23,6 +23,6 @@ func _ready() -> void:
 	player_two.transform = player_two_spown.global_transform
 	player_two.scale = Vector3(4,4,4)
 	add_child(player_two)
-
+	AudioController.play_music()
 	camera_setup_timer.start()
 	#player_one.setPlayerKeys("ui_left_two", "ui_right_two", "ui_up_two", "ui_down_two")
