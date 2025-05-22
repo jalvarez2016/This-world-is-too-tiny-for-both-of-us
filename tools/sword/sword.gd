@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 		#queue_free()
 	#pass # Replace with function body.
 func get_status():
-	return isSwordPickable
+	return current_status
 func sword_pick_up(key):
 	isSwordPickable = "false"
 	$PickUp.queue_free()

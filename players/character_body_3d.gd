@@ -111,9 +111,7 @@ func gobackToRest():
 	left_fist.setStatus("rest")
 	right_fist.setStatus("rest")
 	if does_have_sword:
-		print(player_sword.get_status())
 		player_sword.go_back_to_rest()
-		print(player_sword.get_status())
 
 func setPlayerKeys(player_keys_list, fist_group, enemy_fist_group):
 	left_fist = $BasicDude/Armature/Skeleton3D/LeftHand/Node3D/Area3D2
@@ -175,10 +173,10 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	
 	elif area.is_in_group("sword") and area.get_status() == "true":
 		area.removeSword()
+		does_have_sword = true
 		player_sword = sword_scene.instantiate()
 		player_sword.sword_pick_up(player_keys[5])
 		player_sword.scale = Vector3(4,4,4)
 		player_sword.add_group_to_sword(group)
-		does_have_sword = true
 		$BasicDude/Armature/Skeleton3D/LeftHand/Node3D/Area3D2/CollisionShape3D.add_child(player_sword)
 		
