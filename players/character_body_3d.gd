@@ -9,6 +9,7 @@ extends CharacterBody3D
 @onready var right_fist = $BasicDude/Armature/Skeleton3D/RightHand/Node3D2/Area3D
 @onready var hit_box =$HitBox
 @onready var state_machine = animation.get("parameters/playback")
+@onready var sword_scene = load("res://tools/sword/sword.tscn")
 
 @export var gravity := 10.0
 
@@ -151,4 +152,11 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 			state_machine.travel("Defeat")
 			print("deafeat")
 			
-	
+	elif area.is_in_group("sword") and area.get_status() == true:
+		print("got sword")
+		var player_sword = sword_scene.instantiate()
+		player_sword.sword_pick_up()
+		player_sword.scale = Vector3(4,4,4)
+		player_sword.add_to_group(enemy_fist)
+		$BasicDude/Armature/Skeleton3D/LeftHand/Node3D/Area3D2/CollisionShape3D.add_child(player_sword)
+		
