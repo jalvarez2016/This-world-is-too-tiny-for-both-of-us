@@ -22,7 +22,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="MainCamera" type="Camera3D" parent="." node_paths=PackedStringArray("phantom_camera")]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 10, 3)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 3)
 script = ExtResource("2_i5ya7")
 phantom_camera = NodePath("../PhantomCamera3D")
 
@@ -104,7 +104,7 @@ transform = Transform3D(-0.275906, 0, -0.961185, 0, 1, 0, 0.961185, 0, -0.275906
 transform = Transform3D(-0.275906, 0, -0.961185, 0, 1, 0, 0.961185, 0, -0.275906, 0.0555642, 0, -3.08883)
 
 [node name="PhantomCamera3D" parent="." instance=ExtResource("4_i3kq0")]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 10, 3)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 3)
 
 [node name="Sword" parent="." instance=ExtResource("6_xupa4")]
 transform = Transform3D(6.05073, 0, 0, 0, 6.05073, 0, 0, 0, 6.05073, -14.4463, 3.2903, -3.6054)

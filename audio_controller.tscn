@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ltafnx2rr2pw"]
+
+[ext_resource type="AudioStream" uid="uid://b3iog568ulk37" path="res://Music/prepMusic.wav" id="2_31uvl"]
+[ext_resource type="AudioStream" uid="uid://c22k54l5suwsd" path="res://Music/fight_looped.wav" id="2_qpnks"]
+
+[sub_resource type="GDScript" id="GDScript_w1gap"]
+script/source = "extends AudioStreamPlayer
+@onready var waitbg_music: AudioStreamPlayer = $waitbg_music
+@onready var fightbg_music: AudioStreamPlayer = $fightbg_music
+
+func play_music():
+	waitbg_music.play()
+"
+
+[node name="AudioController" type="AudioStreamPlayer"]
+autoplay = true
+script = SubResource("GDScript_w1gap")
+
+[node name="waitbg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_31uvl")
+volume_db = -15.256
+
+[node name="fightbg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qpnks")
