@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://wo4vkr03frnx"]
+
+[ext_resource type="PackedScene" uid="uid://dbp486dt5vrx" path="res://Models/Guns/Ammo_Box.gltf" id="1_c6f3w"]
+[ext_resource type="Script" uid="uid://o8whs1luklaw" path="res://tools/ammo_box/area_3d.gd" id="2_jqsx5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c6f3w"]
+radius = 0.343264
+
+[node name="Ammo_box" type="Node3D"]
+
+[node name="Ammo_Box2" parent="." instance=ExtResource("1_c6f3w")]
+
+[node name="Area3D" type="Area3D" parent="." groups=["ammo_box"]]
+script = ExtResource("2_jqsx5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.240679, 0)
+shape = SubResource("SphereShape3D_c6f3w")
