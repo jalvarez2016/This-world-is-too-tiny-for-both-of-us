@@ -9,13 +9,16 @@ extends CharacterBody3D
 @onready var right_fist = $BasicDude/Armature/Skeleton3D/RightHand/Node3D2/Area3D
 @onready var hit_box =$HitBox
 @onready var state_machine = animation.get("parameters/playback")
-
 @export var gravity := 10.0
+
+signal health_changed(new_health: int)
 
 var SPEED = 2.0
 var jump_force = 7
 var angular_acceleration := 5
 var health = 100
+var max_health = 100
+
 var current_status = "Idle"
 
 var enemy_fist = null
@@ -116,10 +119,9 @@ func setPlayerKeys(player_keys_list, fist_group, enemy_fist_group):
 	left_fist.add_to_group(fist_group)
 	right_fist.add_to_group(fist_group)
 	
-
+	
 func heal():
 	if health <= 84:
-			
 			if health + 16 > 100:
 				health = 100
 			else:
@@ -132,7 +134,10 @@ func heal():
 func _on_hit_box_area_entered(area: Area3D) -> void:
 	
 	if area.is_in_group(enemy_fist) and area.current_status == "punching":
+		
 		health -= 4
+		max_health = clamp(health - 4, 0, max_health)
+		emit_signal("health_changed", health)
 		current_scale -= 0.1
 		if current_scale == 3:
 			SPEED = 6.0
@@ -151,4 +156,6 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 			state_machine.travel("Defeat")
 			print("deafeat")
 			
+			
+	
 	
