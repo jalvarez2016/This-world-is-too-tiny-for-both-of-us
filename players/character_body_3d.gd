@@ -19,10 +19,12 @@ var angular_acceleration := 5
 var health = 100
 var current_status = "Idle"
 
+var group = null
 var enemy_fist = null
 var player_keys = [null]
 var current_scale = 4
-
+var does_have_sword = false
+var player_sword = null
 #double click to run
 var runing_interval = 0.25
 var last_right_tap_time = 0
@@ -108,6 +110,10 @@ func _physics_process(delta: float) -> void:
 func gobackToRest():
 	left_fist.setStatus("rest")
 	right_fist.setStatus("rest")
+	if does_have_sword:
+		print(player_sword.get_status())
+		player_sword.go_back_to_rest()
+		print(player_sword.get_status())
 
 func setPlayerKeys(player_keys_list, fist_group, enemy_fist_group):
 	left_fist = $BasicDude/Armature/Skeleton3D/LeftHand/Node3D/Area3D2
@@ -116,6 +122,7 @@ func setPlayerKeys(player_keys_list, fist_group, enemy_fist_group):
 	enemy_fist = enemy_fist_group
 	left_fist.add_to_group(fist_group)
 	right_fist.add_to_group(fist_group)
+	group = fist_group
 	
 
 func heal():
@@ -131,8 +138,7 @@ func heal():
 		health = health
 	
 func _on_hit_box_area_entered(area: Area3D) -> void:
-	
-	if area.is_in_group(enemy_fist) and area.current_status == "punching":
+	if area.is_in_group("fist") and area.is_in_group(enemy_fist) and area.current_status == "punching":
 		health -= 4
 		current_scale -= 0.1
 		if current_scale == 3:
@@ -150,13 +156,29 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		
 		if health <= 0 or current_scale <= 0.3:
 			state_machine.travel("Defeat")
-			print("deafeat")
+	elif area.is_in_group("sword") and area.is_in_group(enemy_fist) and area.get_status() == "swing":
+		
+		health -= 16
+		current_scale -= 0.4
+		if current_scale == 3:
+			SPEED = 6.0
+			jump_force = 6
+		elif current_scale == 2:
+			SPEED = 4.0
+			jump_force = 4
+		
 			
-	elif area.is_in_group("sword") and area.get_status() == true:
-		print("got sword")
-		var player_sword = sword_scene.instantiate()
-		player_sword.sword_pick_up()
+		scale = Vector3(current_scale,current_scale,current_scale)
+		
+		if health <= 0 or current_scale <= 0.3:
+			state_machine.travel("Defeat")
+	
+	elif area.is_in_group("sword") and area.get_status() == "true":
+		area.removeSword()
+		player_sword = sword_scene.instantiate()
+		player_sword.sword_pick_up(player_keys[5])
 		player_sword.scale = Vector3(4,4,4)
-		player_sword.add_to_group(enemy_fist)
+		player_sword.add_group_to_sword(group)
+		does_have_sword = true
 		$BasicDude/Armature/Skeleton3D/LeftHand/Node3D/Area3D2/CollisionShape3D.add_child(player_sword)
 		

@@ -44,7 +44,7 @@ mesh = SubResource("BoxMesh_4kpw4")
 shape = SubResource("ConcavePolygonShape3D_i5ya7")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.99591, 1.75213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3229, 4.99591, 1.75213)
 
 [node name="Marker3D2" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.99591, -1.21291)

@@ -1,13 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://kw8g7x5wmxas"]
+[gd_scene load_steps=11 format=3 uid="uid://kw8g7x5wmxas"]
 
 [ext_resource type="Script" uid="uid://cpl18vllbgx4u" path="res://tools/sword/sword.gd" id="1_nsm1i"]
 [ext_resource type="Script" uid="uid://c06qgqjexiam8" path="res://tools/sword/damage_box.gd" id="2_736ct"]
 [ext_resource type="Script" uid="uid://c2ps288jwb1i8" path="res://tools/sword/pick_up.gd" id="2_ey35l"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ey35l"]
+albedo_color = Color(0.538547, 0.305318, 0.0186833, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_o8xsq"]
+material = SubResource("StandardMaterial3D_ey35l")
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ck5h"]
+albedo_color = Color(0.4516, 0.43847, 0.449681, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_uu8fx"]
+material = SubResource("StandardMaterial3D_3ck5h")
 size = Vector3(0.05, 1, 0.05)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uu8fx"]
@@ -20,7 +28,7 @@ size = Vector3(0.1, 0.648926, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_736ct"]
 size = Vector3(0.0464233, 0.665527, 0.0483765)
 
-[node name="Sword" type="Node3D"]
+[node name="Sword" type="Node3D" groups=["sword"]]
 script = ExtResource("1_nsm1i")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -39,7 +47,7 @@ script = ExtResource("2_ey35l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237069, 0)
 shape = SubResource("CapsuleShape3D_uu8fx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["sword"]]
 
 [node name="DamageBox" type="Area3D" parent="StaticBody3D" groups=["sword"]]
 script = ExtResource("2_736ct")
@@ -53,3 +61,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000103757, 0.423134, 0.0010
 shape = SubResource("BoxShape3D_736ct")
 
 [connection signal="area_entered" from="PickUp" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="StaticBody3D/DamageBox" to="." method="_on_damage_box_area_entered"]
