@@ -1,5 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://crtx2bug0v0ab"]
-
+[gd_scene load_steps=15 format=3 uid="uid://crtx2bug0v0ab"]
 
 [ext_resource type="Script" uid="uid://bvmsjjvovdcq" path="res://world test/world.gd" id="1_2hu7o"]
 [ext_resource type="Script" uid="uid://jti6ts8aejho" path="res://world test/health_pack_spawn.gd" id="2_2hu7o"]
@@ -36,6 +35,10 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 shadow_size = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6dfu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uyxuf"]
 
 [node name="World" type="Node3D" node_paths=PackedStringArray("camera_setup_timer")]
 script = ExtResource("1_2hu7o")
@@ -139,6 +142,19 @@ theme_override_styles/background = SubResource("StyleBoxFlat_i5ya7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xupa4")
 value = 100.0
 
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/player1Hp"]
+material = SubResource("ShaderMaterial_k6dfu")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_right = 33.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_uyxuf")
+text = "Player 1"
+
 [node name="player2Hp" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -149,6 +165,21 @@ grow_horizontal = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_i5ya7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xupa4")
 value = 100.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/player2Hp"]
+material = SubResource("ShaderMaterial_k6dfu")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_right = 33.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_uyxuf")
+text = "Player 2
+"
+
 [node name="Sword" parent="." instance=ExtResource("6_xupa4")]
 transform = Transform3D(6.05073, 0, 0, 0, 6.05073, 0, 0, 0, 6.05073, -14.4463, 3.2903, -3.6054)
 

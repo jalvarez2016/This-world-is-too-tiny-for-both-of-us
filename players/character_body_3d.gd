@@ -152,6 +152,8 @@ func heal():
 
 func damge(health_damge, scale_damage):
 	health -= health_damge
+	max_health = clamp(health - health_damge, 0, max_health)
+	emit_signal("health_changed", health)
 	current_scale -= scale_damage
 	if current_scale == 3:
 		SPEED = 6.0
@@ -159,24 +161,11 @@ func damge(health_damge, scale_damage):
 	elif current_scale == 2:
 		SPEED = 4.0
 		jump_force = 4
-	
-func _on_hit_box_area_entered(area: Area3D) -> void:
-	
-	if area.is_in_group(enemy_fist) and area.current_status == "punching":
-		
-		health -= 4
-		max_health = clamp(health - 4, 0, max_health)
-		emit_signal("health_changed", health)
-		current_scale -= 0.1
-		if current_scale == 3:
-			SPEED = 6.0
-			jump_force = 6
-		
 	scale = Vector3(current_scale,current_scale,current_scale)
-	
 	if health <= 0 or current_scale <= 0.3:
 		state_machine.travel("Defeat")
-
+		
+		
 func get_tool(name, ammo = null):
 	if name == "sword":
 		current_tool = "sword"
