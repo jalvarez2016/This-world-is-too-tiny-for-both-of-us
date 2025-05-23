@@ -488,7 +488,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_i5ya7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xupa4")
 value = 100.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/player1Hp"]
+[node name="Player1Name" type="RichTextLabel" parent="CanvasLayer/player1Hp"]
 material = SubResource("ShaderMaterial_k6dfu")
 layout_mode = 1
 anchors_preset = 5
@@ -512,7 +512,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_i5ya7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_xupa4")
 value = 100.0
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/player2Hp"]
+[node name="Player2Name" type="RichTextLabel" parent="CanvasLayer/player2Hp"]
 material = SubResource("ShaderMaterial_k6dfu")
 layout_mode = 1
 anchors_preset = 5
