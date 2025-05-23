@@ -34,7 +34,7 @@ func _ready() -> void:
 	add_child(player_two)
 	camera_setup_timer.start()
 	
-	AudioController.play_music()
+	AudioController.fight_song()
 	
 	# inits progress bar setting curr hp to max hp
 	player1Hp.max_value = player_one.max_health

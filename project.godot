@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-AudioController="*res://audio_controller.tscn"
+AudioController="*res://world test/audio_controller.tscn"
 
 [display]
 
