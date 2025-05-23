@@ -14,6 +14,8 @@ extends CharacterBody3D
 @onready var root = get_tree().get_root().get_node("World")
 @onready var state_machine = animation.get("parameters/playback")
 
+signal health_changed(new_health: int)
+
 @onready var sword_scene = load("res://tools/sword/sword.tscn")
 @onready var gun_scene = load("res://tools/gun/Gun.tscn")
 
@@ -25,6 +27,8 @@ var SPEED = 2.0
 var jump_force = 7
 var angular_acceleration := 5
 var health = 100
+var max_health = 100
+
 var current_status = "Idle"
 
 #players set up
@@ -137,7 +141,6 @@ func set_player_keys(player_keys_list, fist_group, enemy_fist_group):
 
 func heal():
 	if health <= 84:
-			
 			if health + 16 > 100:
 				health = 100
 			else:
@@ -149,6 +152,8 @@ func heal():
 
 func damge(health_damge, scale_damage):
 	health -= health_damge
+	max_health = clamp(health - health_damge, 0, max_health)
+	emit_signal("health_changed", health)
 	current_scale -= scale_damage
 	if current_scale == 3:
 		SPEED = 6.0
@@ -156,13 +161,11 @@ func damge(health_damge, scale_damage):
 	elif current_scale == 2:
 		SPEED = 4.0
 		jump_force = 4
-	
-		
 	scale = Vector3(current_scale,current_scale,current_scale)
-	
 	if health <= 0 or current_scale <= 0.3:
 		state_machine.travel("Defeat")
-
+		
+		
 func get_tool(name, ammo = null):
 	if name == "sword":
 		current_tool = "sword"
@@ -185,9 +188,7 @@ func get_tool_to_drop(name):
 	elif name == "gun":
 		tep = gun_scene.instantiate()
 		tep.scale = Vector3(4,4,4)
-		
 	return tep
-
 	
 func _on_hit_box_area_entered(area: Area3D) -> void:
 	if area.is_in_group("fist") and area.is_in_group(enemy_fist) and area.current_status == "punching":
