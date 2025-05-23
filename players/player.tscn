@@ -1208,6 +1208,12 @@ script = ExtResource("1_4flbx")
 [node name="BasicDude" type="Node3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
+[node name="drop_spot" type="Marker3D" parent="BasicDude"]
+transform = Transform3D(3.33333, 0, 0, 0, 3.33333, 0, 0, 0, 3.33333, 5.27596, 2.41623, 0.19888)
+
+[node name="gun_spot" type="Marker3D" parent="BasicDude"]
+transform = Transform3D(1, 0, -5.92119e-15, 0, 1, 0, 5.92119e-15, 0, 1, -1.44251e-14, 3.54927, 2.43618)
+
 [node name="Armature" type="Node3D" parent="BasicDude"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.18866, 0)
 
@@ -1231,7 +1237,7 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 2.13163e-14, -1.33227e-14, -2.13163e-14, 1, 1.69536e-21, 1.33227e-14, -1.69536e-21, 1, 0, 0.71378, 2.38419e-07)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.71378, 2.38419e-07)
-bones/2/rotation = Quaternion(-0.445901, -2.67888e-08, 1.82646e-08, 0.895082)
+bones/2/rotation = Quaternion(-0.383952, -2.39641e-08, 1.63386e-08, 0.923353)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Forearm.L"
 bones/3/parent = 2
@@ -1259,7 +1265,7 @@ bones/6/parent = 5
 bones/6/rest = Transform3D(1, 7.10543e-15, -3.37707e-08, -7.10543e-15, 1, 7.14173e-22, 3.37707e-08, -4.74217e-22, 1, -1.42109e-14, 0.71378, 2.38419e-07)
 bones/6/enabled = true
 bones/6/position = Vector3(-1.42109e-14, 0.71378, 2.38419e-07)
-bones/6/rotation = Quaternion(-0.445901, 1.16751e-08, -2.57937e-08, 0.895082)
+bones/6/rotation = Quaternion(-0.383952, 8.373e-09, -2.28218e-08, 0.923353)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Forearm.R"
 bones/7/parent = 6
@@ -1300,7 +1306,7 @@ bones/12/name = "Bone.001"
 bones/12/parent = -1
 bones/12/rest = Transform3D(-3.57628e-07, 5.96046e-08, -1, -5.96046e-08, 1, 5.96046e-08, 1, 5.96046e-08, -3.57628e-07, 0, 1.71764, 0)
 bones/12/enabled = true
-bones/12/position = Vector3(0, 1.6836, 0)
+bones/12/position = Vector3(0, 1.71696, 0)
 bones/12/rotation = Quaternion(2.51214e-15, -0.707107, -4.21468e-08, 0.707107)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "Hip.R"
@@ -1330,13 +1336,13 @@ mesh = SubResource("ArrayMesh_j1410")
 skin = SubResource("Skin_lk5vn")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="BasicDude/Armature/Skeleton3D"]
-transform = Transform3D(2.97545e-07, 0.602345, 0.798236, 8.62698e-09, -0.798236, 0.602345, 1, -1.72339e-07, -2.42708e-07, 2.13183, -1.00525, -4.72994e-07)
+transform = Transform3D(2.96686e-07, 0.705162, 0.709046, 9.50154e-09, -0.709046, 0.705162, 1, -2.02474e-07, -2.17064e-07, 2.37388, -0.795276, -5.4394e-07)
 bone_name = "Forearm.L.001"
 bone_idx = 4
 
 [node name="Node3D" type="Node3D" parent="BasicDude/Armature/Skeleton3D/LeftHand"]
 
-[node name="Area3D2" type="Area3D" parent="BasicDude/Armature/Skeleton3D/LeftHand/Node3D"]
+[node name="Area3D2" type="Area3D" parent="BasicDude/Armature/Skeleton3D/LeftHand/Node3D" groups=["fist"]]
 script = ExtResource("2_wu7mp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasicDude/Armature/Skeleton3D/LeftHand/Node3D/Area3D2"]
@@ -1344,14 +1350,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0819818, 4.03897e-28)
 shape = SubResource("SphereShape3D_wu7mp")
 
 [node name="RightHand" type="BoneAttachment3D" parent="BasicDude/Armature/Skeleton3D"]
-transform = Transform3D(-2.66715e-07, -0.602345, -0.798236, -8.62733e-09, -0.798236, 0.602345, -1, 1.67541e-07, 2.07705e-07, -2.13183, -1.00525, 7.29912e-07)
+transform = Transform3D(-2.67574e-07, -0.705162, -0.709046, -9.50184e-09, -0.709046, 0.705162, -1, 1.95421e-07, 1.83022e-07, -2.37388, -0.795276, 7.95546e-07)
 bone_name = "Forearm.R.001"
 bone_idx = 8
 
 [node name="Node3D2" type="Node3D" parent="BasicDude/Armature/Skeleton3D/RightHand"]
 transform = Transform3D(-1, -3.69482e-13, -3.8014e-13, 3.69482e-13, -1, 1.36094e-14, -3.8014e-13, -1.10804e-20, 1, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="BasicDude/Armature/Skeleton3D/RightHand/Node3D2"]
+[node name="Area3D" type="Area3D" parent="BasicDude/Armature/Skeleton3D/RightHand/Node3D2" groups=["fist"]]
 script = ExtResource("2_wu7mp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasicDude/Armature/Skeleton3D/RightHand/Node3D2/Area3D"]
