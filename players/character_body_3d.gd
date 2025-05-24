@@ -202,6 +202,10 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		set_tool.reload_gun()
 	elif area.is_in_group("bullet") and area.is_in_group(enemy_fist):
 		damge(20, 0.5)
+	elif area.is_in_group("env_damage"):
+		var env_damage_amount = area.damage
+		damge(env_damage_amount, 0.5)
+		pass
 	elif current_tool == null and area.is_in_group("sword") and area.get_status() == "pickable":
 		area.removeSword()
 		get_tool("sword")

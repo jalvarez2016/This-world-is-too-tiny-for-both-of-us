@@ -1,3 +1,3 @@
-extends MeshInstance3D
+extends Area3D
 
-@export var damage : float = 3.0
+@export var damage : float = 10.0
