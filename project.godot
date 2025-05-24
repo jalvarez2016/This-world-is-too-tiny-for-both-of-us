@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 player_two_fist=""
 player_one_fist=""
 health_pack=""
+env_damage=""
 tool=""
 
 [input]

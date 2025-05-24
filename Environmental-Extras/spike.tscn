@@ -1,0 +1,80 @@
+[gd_scene load_steps=16 format=3 uid="uid://c6ya83ic02pqf"]
+
+[ext_resource type="Script" uid="uid://cjmid0jnu2i3o" path="res://Environmental-Extras/spike.gd" id="1_yk6g7"]
+[ext_resource type="PackedScene" uid="uid://bdutw68e8a188" path="res://Environmental-Extras/Spike.glb" id="2_aw7cb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yk6g7"]
+lifetime_randomness = 0.45
+emission_shape = 1
+emission_sphere_radius = 1.2
+gravity = Vector3(0, 2, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aw7cb"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vmcwf"]
+material = SubResource("StandardMaterial3D_aw7cb")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_p6oq7"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="Gradient" id="Gradient_cnkvs"]
+colors = PackedColorArray(1, 1, 0.458824, 1, 0.807619, 0.256303, 0.0455599, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nw3s5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yj75m"]
+color_ramp = SubResource("Gradient_cnkvs")
+noise = SubResource("FastNoiseLite_nw3s5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2n5bh"]
+shading_mode = 0
+diffuse_mode = 3
+albedo_color = Color(0.974436, 0.641653, 0.537603, 1)
+albedo_texture = SubResource("NoiseTexture2D_yj75m")
+
+[sub_resource type="Gradient" id="Gradient_aw7cb"]
+offsets = PackedFloat32Array(0, 0.659836)
+colors = PackedColorArray(1, 0, 0, 1, 0.767842, 0.585854, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vmcwf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p6oq7"]
+color_ramp = SubResource("Gradient_aw7cb")
+noise = SubResource("FastNoiseLite_vmcwf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmcwf"]
+albedo_texture = SubResource("NoiseTexture2D_p6oq7")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aw7cb"]
+radius = 1.0
+
+[node name="Spike" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_yk6g7")
+draw_pass_1 = SubResource("SphereMesh_vmcwf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_p6oq7")
+surface_material_override/0 = SubResource("StandardMaterial3D_2n5bh")
+
+[node name="Spike" parent="." instance=ExtResource("2_aw7cb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Cube" parent="Spike" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vmcwf")
+
+[node name="Area3D" type="Area3D" parent="Spike" groups=["env_damage"]]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_yk6g7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spike/Area3D"]
+shape = SubResource("SphereShape3D_aw7cb")
+
+[editable path="Spike"]
