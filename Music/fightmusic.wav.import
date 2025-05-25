@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://c22k54l5suwsd"
-path="res://.godot/imported/fight_looped.wav-854c3d037b5a4eb7ea57db4ef6d1a87a.sample"
+uid="uid://b3iog568ulk37"
+path="res://.godot/imported/fightmusic.wav-d07bf5e68f672cd7c1c9ec0bdaf65c45.sample"
 
 [deps]
 
-source_file="res://Music/fight_looped.wav"
-dest_files=["res://.godot/imported/fight_looped.wav-854c3d037b5a4eb7ea57db4ef6d1a87a.sample"]
+source_file="res://Music/fightmusic.wav"
+dest_files=["res://.godot/imported/fightmusic.wav-d07bf5e68f672cd7c1c9ec0bdaf65c45.sample"]
 
 [params]
 

@@ -12,6 +12,9 @@ var player_two_keys = ["ui_left_two", "ui_right_two", "ui_up_two", "ui_down_two"
 @onready var player1Hp = $CanvasLayer/player1Hp
 @onready var player2Hp = $CanvasLayer/player2Hp
 
+@onready var player1name = $CanvasLayer/player1Hp/Player1Name
+@onready var player2name = $CanvasLayer/player2Hp/Player2Name
+
 # real time updates ui hp bar
 func player_one_health_changed(new_health: int) -> void:
 	player1Hp.value = new_health
@@ -34,7 +37,12 @@ func _ready() -> void:
 	add_child(player_two)
 	camera_setup_timer.start()
 	
-	AudioController.play_music()
+	AudioController.fight_song()
+	# Players Text Naming
+	player1name.text = PlayerInfo.player1_name
+	player2name.text = PlayerInfo.player2_name
+	if player1name.text == "": player1name.text = "Player1"
+	if player2name.text == "": player2name.text = "Player2"
 	
 	# inits progress bar setting curr hp to max hp
 	player1Hp.max_value = player_one.max_health
