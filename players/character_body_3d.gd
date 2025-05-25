@@ -164,7 +164,9 @@ func damge(health_damge, scale_damage):
 	scale = Vector3(current_scale,current_scale,current_scale)
 	if health <= 0 or current_scale <= 0.3:
 		state_machine.travel("Defeat")
-		
+		$Timer2.start()
+		# change to victory scene
+		#get_tree().change_scene_to_file("res://world test/main_scene.tscn")
 		
 func get_tool(name, ammo = null):
 	if name == "sword":
@@ -228,3 +230,9 @@ func drop_tool():
 		var temp = get_tool_to_drop("sword")
 		temp.transform = drop_spot.global_transform
 		root.add_child(temp)
+
+
+func go_victory_scene() -> void:
+	AudioController.stop_all_music((get_tree().root))
+	#change this victory scene
+	get_tree().change_scene_to_file("res://Victory/victory.tscn")

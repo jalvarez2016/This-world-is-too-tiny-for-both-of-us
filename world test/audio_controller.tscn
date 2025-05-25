@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ltafnx2rr2pw"]
+
+[ext_resource type="AudioStream" uid="uid://b3iog568ulk37" path="res://Music/fightmusic.wav" id="1_awum2"]
+[ext_resource type="AudioStream" uid="uid://c22k54l5suwsd" path="res://Music/fight_looped.wav" id="2_fn1kj"]
+[ext_resource type="AudioStream" uid="uid://bqmkmivpe2yul" path="res://Music/introMusic.wav" id="3_aywqc"]
+
+[sub_resource type="GDScript" id="GDScript_w1gap"]
+script/source = "extends AudioStreamPlayer
+
+@onready var fight_music: AudioStreamPlayer = $fight_music
+@onready var action_music: AudioStreamPlayer = $action_music
+@onready var intro_music: AudioStreamPlayer = $intro_music
+
+func stop_all_music(node: Node) -> void:
+	for child in node.get_children():
+		if child is AudioStreamPlayer and child.playing:
+			child.stop()
+		elif child is Node:
+			stop_all_music(child)
+			
+func fight_song():
+	fight_music.play()
+	
+func action_song():
+	action_music.play()
+	
+func intro_song():
+	intro_music.play()
+
+
+	
+"
+
+[node name="AudioController" type="AudioStreamPlayer"]
+script = SubResource("GDScript_w1gap")
+
+[node name="fight_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_awum2")
+volume_db = -15.0
+
+[node name="action_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fn1kj")
+
+[node name="intro_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aywqc")
+volume_db = -15.0
