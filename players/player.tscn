@@ -1237,7 +1237,7 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 2.13163e-14, -1.33227e-14, -2.13163e-14, 1, 1.69536e-21, 1.33227e-14, -1.69536e-21, 1, 0, 0.71378, 2.38419e-07)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.71378, 2.38419e-07)
-bones/2/rotation = Quaternion(-0.444086, -2.67854e-08, 1.82623e-08, 0.895984)
+bones/2/rotation = Quaternion(-0.426141, -1.68133e-08, 1.14633e-08, 0.904657)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Forearm.L"
 bones/3/parent = 2
@@ -1265,7 +1265,7 @@ bones/6/parent = 5
 bones/6/rest = Transform3D(1, 7.10543e-15, -3.37707e-08, -7.10543e-15, 1, 7.14173e-22, 3.37707e-08, -4.74217e-22, 1, -1.42109e-14, 0.71378, 2.38419e-07)
 bones/6/enabled = true
 bones/6/position = Vector3(-1.42109e-14, 0.71378, 2.38419e-07)
-bones/6/rotation = Quaternion(-0.444086, 1.16565e-08, -2.57608e-08, 0.895984)
+bones/6/rotation = Quaternion(-0.426141, 1.53792e-09, -1.86588e-08, 0.904657)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Forearm.R"
 bones/7/parent = 6
@@ -1306,7 +1306,7 @@ bones/12/name = "Bone.001"
 bones/12/parent = -1
 bones/12/rest = Transform3D(-3.57628e-07, 5.96046e-08, -1, -5.96046e-08, 1, 5.96046e-08, 1, 5.96046e-08, -3.57628e-07, 0, 1.71764, 0)
 bones/12/enabled = true
-bones/12/position = Vector3(0, 1.68458, 0)
+bones/12/position = Vector3(0, 1.69432, 0)
 bones/12/rotation = Quaternion(2.51214e-15, -0.707107, -4.21468e-08, 0.707107)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "Hip.R"
@@ -1336,7 +1336,7 @@ mesh = SubResource("ArrayMesh_j1410")
 skin = SubResource("Skin_lk5vn")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="BasicDude/Armature/Skeleton3D"]
-transform = Transform3D(2.97688e-07, 0.605575, 0.795788, 8.74828e-09, -0.795788, 0.605575, 1, -1.73311e-07, -2.42194e-07, 2.13943, -0.999485, -4.75282e-07)
+transform = Transform3D(2.78346e-07, 0.636808, 0.771023, -2.22795e-09, -0.771023, 0.636808, 1, -1.78971e-07, -2.13193e-07, 2.21296, -0.941181, -4.88608e-07)
 bone_name = "Forearm.L.001"
 bone_idx = 4
 
@@ -1350,7 +1350,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0819818, 4.03897e-28)
 shape = SubResource("SphereShape3D_wu7mp")
 
 [node name="RightHand" type="BoneAttachment3D" parent="BasicDude/Armature/Skeleton3D"]
-transform = Transform3D(-2.66572e-07, -0.605575, -0.795788, -8.74863e-09, -0.795788, 0.605575, -1, 1.68391e-07, 2.06837e-07, -2.13943, -0.999485, 7.31914e-07)
+transform = Transform3D(-2.85914e-07, -0.636808, -0.771023, 2.22762e-09, -0.771023, 0.636808, -1, 1.80355e-07, 2.21865e-07, -2.21296, -0.941181, 7.60078e-07)
 bone_name = "Forearm.R.001"
 bone_idx = 8
 

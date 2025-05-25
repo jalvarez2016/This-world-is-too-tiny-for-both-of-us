@@ -9,6 +9,13 @@ var group = null
 var rounds = 6
 @onready var round_mesh = [$Node3D/Bullet2, $Node3D/Bullet3, $Node3D/Bullet4, $Node3D/Bullet5, $Node3D/Bullet6, $Node3D/Bullet7]
 
+func _ready() -> void:
+	print(rounds,"rounds")
+	for i in range(rounds):
+		print(i)
+		round_mesh[i].visible = true
+		
+
 func _process(delta: float) -> void:
 	if in_hand and Input.is_action_just_pressed(triger) and rounds > 0:
 		$Node3D/Bullet2.visible
@@ -23,6 +30,8 @@ func _process(delta: float) -> void:
 
 func get_data():
 	return rounds
+
+
 
 func reload_gun():
 	for rounds in range(6):

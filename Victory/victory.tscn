@@ -1,0 +1,236 @@
+[gd_scene load_steps=20 format=3 uid="uid://ba0l16qk6fpop"]
+
+[ext_resource type="Script" uid="uid://b2hyvb4q50va0" path="res://Victory/victory.gd" id="1_v31sk"]
+[ext_resource type="PackedScene" uid="uid://c7qyvqxrdvqmk" path="res://Models/BasicDude.glb" id="2_0qqlm"]
+[ext_resource type="PackedScene" uid="uid://bkqibv6m3rx1r" path="res://Models/trophies/trophy.glb" id="2_15vr3"]
+[ext_resource type="PackedScene" uid="uid://d2utwacy1c63m" path="res://Models/trophies/sign.glb" id="4_k2qxy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v31sk"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_qr7ta"]
+sky_material = SubResource("ProceduralSkyMaterial_v31sk")
+
+[sub_resource type="Environment" id="Environment_v3ap6"]
+background_mode = 2
+sky = SubResource("Sky_qr7ta")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2qxy"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v31sk"]
+material = SubResource("StandardMaterial3D_k2qxy")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qr7ta"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="Animation" id="Animation_e8xaq"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 0.112997, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.20543, -0.559157, -0.276991, 0.753935)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("trophy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -3.17913, 2.91257, -1.8683)
+
+[sub_resource type="Animation" id="Animation_v3ap6"]
+resource_name = "victory"
+length = 5.0
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.0333333, 1, 9.11307, 0.156003, 6.63618, 1, 1, 9.11307, 11.267, 6.63618)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.0333333, 1, 0, 0, 0, 2.03333, 1, 0, 5.73993, 0)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.256104, -0.355423, -0.101916, 0.89314, 4.86667, 1, -0.187381, 0, 0, 0.982287)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -16.825, 19.433, 9.456, 2.46667, 1, -12.3274, 19.4332, 17.0597, 4.9, 1, -0.0745525, 19.4334, 17.8994)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("trophy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0.0666667, 1, -3.17913, 2.91257, -1.8683, 2.06667, 1, -3.17913, 13.6804, -1.8683)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15ee3"]
+_data = {
+&"RESET": SubResource("Animation_e8xaq"),
+&"victory": SubResource("Animation_v3ap6")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6l5of"]
+albedo_color = Color(0.389336, 0.628888, 0.733492, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u1yty"]
+material = SubResource("StandardMaterial3D_6l5of")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_15vr3"]
+
+[sub_resource type="Animation" id="Animation_6l5of"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 4.89126, 4.89126, 21.2214)
+
+[sub_resource type="Animation" id="Animation_k2qxy"]
+resource_name = "sign_bounce"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 4.89126, 4.89126, 21.2214, 1, 1, 8.49832, 8.49832, 36.8711, 1.93333, 1, 4.89126, 4.89126, 21.2214)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f24yl"]
+_data = {
+&"RESET": SubResource("Animation_6l5of"),
+&"sign_bounce": SubResource("Animation_k2qxy")
+}
+
+[node name="Victory" type="Node3D"]
+script = ExtResource("1_v31sk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v3ap6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0.30194, -0.0543691, 0.951775, -0.398542, 0.899745, 0.17783, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.112997, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_v31sk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qr7ta")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_15ee3")
+}
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(112.723, 0, 0, 0, 1, 0, 0, 0, 83.5503, 0, 0, 0)
+mesh = SubResource("BoxMesh_u1yty")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(68.9908, 0, -1.36532e-13, -2.6364e-13, 4.37155e-08, -35.7285, 0, 1.00009, 1.56174e-06, -0.766898, 15.6754, -21.0643)
+mesh = SubResource("BoxMesh_u1yty")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(41.9468, 0.937623, 1.21601e-06, -1.50418e-13, 5.26684e-08, -35.7495, -51.9722, 0.756755, 9.81441e-07, -55.1934, 15.6754, 0.0740509)
+mesh = SubResource("BoxMesh_u1yty")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(36.2917, -0.56211, -1.27954e-06, -1.592e-13, 3.00073e-08, -35.7495, 51.7665, 0.394076, 8.97041e-07, 50.2024, 15.6754, 2.94483)
+mesh = SubResource("BoxMesh_u1yty")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.221239, 0.647402, -0.729331, -0.187931, 0.762149, 0.619525, 0.956941, 1.2219e-06, 0.290284, -16.825, 19.433, 9.456)
+
+[node name="trophy" parent="." instance=ExtResource("2_15vr3")]
+transform = Transform3D(2.38697, 0, 0, 0, 2.38697, 0, 0, 0, 2.38697, -3.17913, 2.91257, -1.8683)
+
+[node name="BasicDude2" parent="." instance=ExtResource("2_0qqlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.51851, 0.765277, 1.45304)
+
+[node name="Skeleton3D" parent="BasicDude2/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.707107, 7.3757e-08, 9.48304e-08, 0.707107)
+bones/2/rotation = Quaternion(-1.35125e-21, -6.66134e-15, -1.06581e-14, 1)
+bones/3/rotation = Quaternion(6.41232e-24, 1.49012e-08, 1.77636e-15, 1)
+bones/5/rotation = Quaternion(9.27259e-08, 0.707107, 0.707107, -1.37679e-07)
+bones/6/rotation = Quaternion(-8.32423e-22, -1.68853e-08, -3.55272e-15, 1)
+bones/7/rotation = Quaternion(-8.27642e-23, -1.49012e-08, -1.77636e-15, 1)
+bones/9/rotation = Quaternion(0.659769, 0.254372, 0.659768, -0.254372)
+bones/10/rotation = Quaternion(-0.359737, 1.67971e-07, 6.50068e-08, 0.933054)
+bones/11/rotation = Quaternion(2.50949e-15, 7.99361e-15, -8.19392e-16, 1)
+bones/12/position = Vector3(0, 1.71764, 0)
+bones/12/rotation = Quaternion(3.14019e-15, -0.707107, -4.21468e-08, 0.707107)
+bones/13/rotation = Quaternion(0.659769, -0.254372, -0.659768, -0.254372)
+bones/14/rotation = Quaternion(-0.359737, -5.67428e-08, -1.07891e-07, 0.933054)
+bones/15/rotation = Quaternion(2.06339e-15, 3.55271e-15, 8.19393e-16, 1)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197999, 1.75851, 0.612219)
+
+[node name="BasicDude" parent="RigidBody3D" instance=ExtResource("2_0qqlm")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="RigidBody3D/BasicDude/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.707107, 7.3757e-08, 9.48304e-08, 0.707107)
+bones/2/rotation = Quaternion(-1.35125e-21, -6.66134e-15, -1.06581e-14, 1)
+bones/3/rotation = Quaternion(6.41232e-24, 1.49012e-08, 1.77636e-15, 1)
+bones/5/rotation = Quaternion(9.27259e-08, 0.707107, 0.707107, -1.37679e-07)
+bones/6/rotation = Quaternion(-8.32423e-22, -1.68853e-08, -3.55272e-15, 1)
+bones/7/rotation = Quaternion(-8.27642e-23, -1.49012e-08, -1.77636e-15, 1)
+bones/9/rotation = Quaternion(0.659769, 0.254372, 0.659768, -0.254372)
+bones/10/rotation = Quaternion(-0.359737, 1.67971e-07, 6.50068e-08, 0.933054)
+bones/11/rotation = Quaternion(2.50949e-15, 7.99361e-15, -8.19392e-16, 1)
+bones/12/position = Vector3(0, 1.71764, 0)
+bones/12/rotation = Quaternion(3.14019e-15, -0.707107, -4.21468e-08, 0.707107)
+bones/13/rotation = Quaternion(0.659769, -0.254372, -0.659768, -0.254372)
+bones/14/rotation = Quaternion(-0.359737, -5.67428e-08, -1.07891e-07, 0.933054)
+bones/15/rotation = Quaternion(2.06339e-15, 3.55271e-15, 8.19393e-16, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_15vr3")
+
+[node name="trophy2" parent="." instance=ExtResource("2_15vr3")]
+transform = Transform3D(0.501616, 0, 0, 0, 0.501616, 0, 0, 0, 0.501616, 10.2794, 1.10455, 1.60064)
+
+[node name="sign" parent="." instance=ExtResource("4_k2qxy")]
+transform = Transform3D(4.89126, 0, 0, 0, 4.89126, 0, 0, 0, 21.2214, -0.273645, 20.2978, -6.10751)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="sign"]
+libraries = {
+&"": SubResource("AnimationLibrary_f24yl")
+}
+
+[editable path="BasicDude2"]
+[editable path="RigidBody3D/BasicDude"]

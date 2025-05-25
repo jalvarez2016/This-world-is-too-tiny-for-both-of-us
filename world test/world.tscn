@@ -527,7 +527,7 @@ text = "Player 2
 "
 
 [node name="Gun" parent="." instance=ExtResource("8_ya54j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29976, 2.51409, -0.751641)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.29976, 2.51409, -0.751641)
 
 [node name="Sword" parent="." instance=ExtResource("9_fdvnt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35133, 2.26105, -3.44396)

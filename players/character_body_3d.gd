@@ -235,4 +235,4 @@ func drop_tool():
 func go_victory_scene() -> void:
 	AudioController.stop_all_music((get_tree().root))
 	#change this victory scene
-	get_tree().change_scene_to_file("res://world test/main_scene.tscn")
+	get_tree().change_scene_to_file("res://Victory/victory.tscn")
