@@ -103,6 +103,16 @@ material = SubResource("StandardMaterial3D_6l5of")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_15vr3"]
 
+[sub_resource type="Animation" id="Animation_6l5of"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 4.89126, 4.89126, 21.2214)
+
 [sub_resource type="Animation" id="Animation_k2qxy"]
 resource_name = "sign_bounce"
 length = 2.0
@@ -114,16 +124,6 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 4.89126, 4.89126, 21.2214, 1, 1, 8.49832, 8.49832, 36.8711, 1.93333, 1, 4.89126, 4.89126, 21.2214)
-
-[sub_resource type="Animation" id="Animation_6l5of"]
-length = 0.001
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 4.89126, 4.89126, 21.2214)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f24yl"]
 _data = {
