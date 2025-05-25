@@ -1,8 +1,13 @@
-[gd_scene load_steps=49 format=4 uid="uid://gwxdxeypxnpo"]
+[gd_scene load_steps=54 format=4 uid="uid://gwxdxeypxnpo"]
 
 [ext_resource type="Script" uid="uid://ler7njrgn7xs" path="res://players/character_body_3d.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://dwoo0nr5sybuo" path="res://players/hit_box.gd" id="2_i6aj8"]
 [ext_resource type="Script" uid="uid://bacvyq230knsi" path="res://players/punch.gd" id="2_wu7mp"]
+[ext_resource type="Script" uid="uid://dcn0qeq6nqs7t" path="res://players/sound_effects.gd" id="4_60y4r"]
+[ext_resource type="AudioStream" uid="uid://cotr2x2rst2mo" path="res://Music/hurt.wav" id="5_0yn0j"]
+[ext_resource type="AudioStream" uid="uid://bdytmcpmm6mvx" path="res://Music/punch.wav" id="5_5illy"]
+[ext_resource type="AudioStream" uid="uid://cq576espicnob" path="res://Music/heal.wav" id="6_0yn0j"]
+[ext_resource type="AudioStream" uid="uid://dykwi3jylm6qv" path="res://Music/equip.wav" id="8_1jwom"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5d5o"]
 resource_name = "Hat"
@@ -1202,8 +1207,9 @@ height = 1.4299
 radius = 0.172502
 height = 0.906388
 
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("audioController")]
 script = ExtResource("1_4flbx")
+audioController = NodePath("SoundEffects")
 
 [node name="BasicDude" type="Node3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -1390,6 +1396,26 @@ one_shot = true
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="SoundEffects" type="Node3D" parent="." node_paths=PackedStringArray("hurtSound", "healSound", "punchSound", "equipSound")]
+script = ExtResource("4_60y4r")
+hurtSound = NodePath("HurtSound")
+healSound = NodePath("HealSound")
+punchSound = NodePath("PunchSound")
+equipSound = NodePath("EquipSound")
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="SoundEffects"]
+stream = ExtResource("5_0yn0j")
+autoplay = true
+
+[node name="HealSound" type="AudioStreamPlayer3D" parent="SoundEffects"]
+stream = ExtResource("6_0yn0j")
+
+[node name="PunchSound" type="AudioStreamPlayer3D" parent="SoundEffects"]
+stream = ExtResource("5_5illy")
+
+[node name="EquipSound" type="AudioStreamPlayer3D" parent="SoundEffects"]
+stream = ExtResource("8_1jwom")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="Timer2" to="." method="go_victory_scene"]
