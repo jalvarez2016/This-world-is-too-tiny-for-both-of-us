@@ -500,6 +500,8 @@ offset_bottom = 26.0
 grow_horizontal = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_uyxuf")
 text = "Player 1"
+fit_content = true
+scroll_active = false
 
 [node name="player2Hp" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 1

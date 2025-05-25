@@ -9,3 +9,7 @@ func _ready() -> void:
 	player_animation.play("Victory")
 	lost_animation.play("Defeat")
 	sign_animation.play("sign_bounce")
+
+# target the player model and reize in victory scene wip
+func scale_model(new_scale: Vector3):
+	pass
