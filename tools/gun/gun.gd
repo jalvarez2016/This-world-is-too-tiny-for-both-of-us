@@ -1,4 +1,5 @@
 extends Node3D
+@export var shootSound: AudioStreamPlayer3D
 @onready var bullet_scene = load("res://tools/gun/Bullet.tscn")
 @onready var bullet_spawn = $Marker3D
 @onready var root = get_tree().get_root().get_node("World")
@@ -27,6 +28,7 @@ func _process(delta: float) -> void:
 		bullet.transform = bullet_spawn.global_transform
 		bullet.scale = Vector3(.4,.4,.4)
 		root.add_child(bullet)
+		shootSound.play()
 
 func get_data():
 	return rounds

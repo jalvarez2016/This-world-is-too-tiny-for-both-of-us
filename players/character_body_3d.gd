@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+@export var audioController: Node3D
 
 #@onready var spring_arm: SpringArm3D = $Head/SpringArm3D
 @onready var mesh = $BasicDude
@@ -110,6 +110,7 @@ func _physics_process(delta: float) -> void:
 			state_machine.travel("Punch")
 			left_fist.setStatus("punching")
 			right_fist.setStatus("punching")
+			audioController.punchSound.play()
 		elif Input.is_action_just_pressed(player_keys[6]):
 			drop_tool()
 		elif Input.is_action_just_pressed(player_keys[0]) or Input.is_action_just_pressed(player_keys[1]) or Input.is_action_just_pressed(player_keys[2]) or Input.is_action_just_pressed(player_keys[3]) :
@@ -147,10 +148,12 @@ func heal():
 				health += 16
 			current_scale += .4
 			scale = Vector3(current_scale,current_scale,current_scale)
+			audioController.healSound.play()
 	else:
 		health = health
 
 func damge(health_damge, scale_damage):
+	audioController.hurtSound.play()
 	health -= health_damge
 	max_health = clamp(health - health_damge, 0, max_health)
 	emit_signal("health_changed", health)
@@ -169,6 +172,7 @@ func damge(health_damge, scale_damage):
 		#get_tree().change_scene_to_file("res://world test/main_scene.tscn")
 		
 func get_tool(name, ammo = null):
+	audioController.equipSound.play()
 	if name == "sword":
 		current_tool = "sword"
 		set_tool = sword_scene.instantiate()
@@ -202,6 +206,10 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		set_tool.reload_gun()
 	elif area.is_in_group("bullet") and area.is_in_group(enemy_fist):
 		damge(20, 0.5)
+	elif area.is_in_group("env_damage"):
+		var env_damage_amount = area.damage
+		damge(env_damage_amount, 0.5)
+		pass
 	elif current_tool == null and area.is_in_group("sword") and area.get_status() == "pickable":
 		area.removeSword()
 		get_tool("sword")
@@ -213,6 +221,7 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		gun_spot.add_child(set_tool)
 
 func drop_tool():
+	audioController.equipSound.play()
 	if current_tool == "gun":
 		var ammo = set_tool.get_data()
 		set_tool.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://crtx2bug0v0ab"]
+[gd_scene load_steps=52 format=4 uid="uid://crtx2bug0v0ab"]
 
 [ext_resource type="Script" uid="uid://bvmsjjvovdcq" path="res://world test/world.gd" id="1_2hu7o"]
 [ext_resource type="Script" uid="uid://jti6ts8aejho" path="res://world test/health_pack_spawn.gd" id="2_2hu7o"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2fvaiyt51vwy" path="res://tools/gun/Gun.tscn" id="8_ya54j"]
 [ext_resource type="PackedScene" uid="uid://kw8g7x5wmxas" path="res://tools/sword/sword.tscn" id="9_fdvnt"]
 [ext_resource type="PackedScene" uid="uid://wo4vkr03frnx" path="res://tools/ammo_box/ammo_box.tscn" id="10_urt7q"]
+[ext_resource type="PackedScene" uid="uid://c6ya83ic02pqf" path="res://Environmental-Extras/spike.tscn" id="11_fdvnt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_phm66"]
 sky_top_color = Color(0.548891, 0.150798, 0.167119, 1)
@@ -534,6 +535,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35133, 2.26105, -3.44396)
 
 [node name="Ammo_box" parent="." instance=ExtResource("10_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8058, 2, -1.77539)
+
+[node name="Spikes" type="Node3D" parent="."]
+
+[node name="Spike" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 4, 42)
+
+[node name="Spike2" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 4, 42)
+
+[node name="Spike3" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 4, -42)
+
+[node name="Spike4" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 4, -42)
+
+[node name="Spike5" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 4, -12)
+
+[node name="Spike6" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88956, 4, 30.1231)
+
+[node name="Spike7" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.1104, 4, -2.87687)
+
+[node name="Spike8" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8896, 4, 8.12313)
+
+[node name="Spike9" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8896, 4, 9.12313)
 
 [connection signal="timeout" from="MainCamera/CameraTimer" to="MainCamera" method="_on_timer_timeout"]
 [connection signal="timeout" from="HealthPackSpawnTimer" to="HealthPackSpawn" method="_on_health_pack_spawn_timer_timeout"]
