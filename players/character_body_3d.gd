@@ -200,12 +200,12 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	if area.is_in_group("fist") and area.is_in_group(enemy_fist) and area.current_status == "punching":
 		damge(4, 0.1)
 	elif area.is_in_group("sword") and area.is_in_group(enemy_fist) and area.get_status() == "swing":
-		damge(16,0.4)
+		damge(6,0.15)
 	elif area.is_in_group("ammo_box") and current_tool == "gun" and set_tool.get_data() <6:
 		area.remove_box()
 		set_tool.reload_gun()
 	elif area.is_in_group("bullet") and area.is_in_group(enemy_fist):
-		damge(20, 0.5)
+		damge(12, 0.3)
 	elif area.is_in_group("env_damage"):
 		var env_damage_amount = area.damage
 		damge(env_damage_amount, 0.5)
@@ -214,11 +214,13 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		area.removeSword()
 		get_tool("sword")
 		$BasicDude/Armature/Skeleton3D/LeftHand/Node3D/Area3D2/CollisionShape3D.add_child(set_tool)
+		set_tool.stop_animation()
 	elif current_tool == null and area.is_in_group("gun") and area.get_status() == "pickable":
 		var ammo = area.get_data()
 		area.removeGun()
 		get_tool("gun",ammo)
 		gun_spot.add_child(set_tool)
+		set_tool.stop_animation()
 
 func drop_tool():
 	audioController.equipSound.play()

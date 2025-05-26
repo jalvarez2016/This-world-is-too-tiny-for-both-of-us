@@ -8,18 +8,16 @@ var triger = null
 var in_hand = false
 var group = null
 var rounds = 6
-@onready var round_mesh = [$Node3D/Bullet2, $Node3D/Bullet3, $Node3D/Bullet4, $Node3D/Bullet5, $Node3D/Bullet6, $Node3D/Bullet7]
+@onready var round_mesh = [$Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet2, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet3, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet4, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet5, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet6, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet7]
 
 func _ready() -> void:
-	print(rounds,"rounds")
+	$AnimationPlayer.play("up_down")
 	for i in range(rounds):
-		print(i)
 		round_mesh[i].visible = true
 		
 
 func _process(delta: float) -> void:
 	if in_hand and Input.is_action_just_pressed(triger) and rounds > 0:
-		$Node3D/Bullet2.visible
 		round_mesh[rounds - 1].visible = false
 		
 		rounds -= 1
@@ -44,10 +42,14 @@ func reload_gun():
 func gun_drop_set_up(ammo):
 	rounds = ammo
 	
+func stop_animation():
+	$AnimationPlayer.play("RESET")
+	
 func gun_set_up(key, new_group,ammo = 6):
 	print(ammo)
 	rounds = ammo
 	$PickUp.queue_free()
+	$AnimationPlayer.pause()
 	triger = key
 	group = new_group
 	in_hand = true

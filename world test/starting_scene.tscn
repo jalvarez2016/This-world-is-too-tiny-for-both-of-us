@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://515a3mamih3s" path="res://world test/starting_scene.gd" id="1_bh72h"]
 [ext_resource type="MeshLibrary" uid="uid://dyybgh7nlh752" path="res://Models/Environment/EnvironmentMeshLibarary.tres" id="1_sm460"]
 [ext_resource type="Texture2D" uid="uid://6iwkmao2ibbr" path="res://Models/ExtraEnvironment/prototypebits_texture.png" id="2_bh72h"]
-[ext_resource type="PackedScene" uid="uid://bl1qjf5v4y5eg" path="res://world test/main_scene.tscn" id="3_oke0p"]
+[ext_resource type="PackedScene" uid="uid://bl1qjf5v4y5eg" path="res://title/main_scene.tscn" id="3_oke0p"]
 [ext_resource type="PackedScene" uid="uid://dttwiovvxviwp" path="res://tools/spawner/spawner.tscn" id="5_oke0p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpa6o"]
