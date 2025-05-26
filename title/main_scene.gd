@@ -1,12 +1,17 @@
 extends Control
 
-@onready var player_one_input = $VBoxContainer/Player1Input
-@onready var player_two_input = $VBoxContainer/Player2Input
-@onready var start = $start
-@onready var popup_warning = $VBoxContainer/warning
-@onready var timer = $Timer
 
+@onready var player_one_input = $VBoxContainer2/TextConatiner/Player1Input
+@onready var player_two_input = $VBoxContainer2/TextConatiner/Player2Input
+@onready var start = $TextConatiner/start
+@onready var popup_warning = $VBoxContainer2/TextConatiner/warning
+@onready var timer = $TextConatiner/Timer
+@onready var modal = $modal
+@onready var modalText = $modal/modalWrap/CenterContainer/modalBox/VBoxContainer/modalText
+@onready var button = $modal/modalWrap/CenterContainer/modalBox/colorwrapper/Button
 func _ready() -> void:
+	print(button)  # Should print the node, NOT null
+	modal.visible = false
 	AudioController.intro_song()
 	popup_warning.visible = false
 	
@@ -36,5 +41,15 @@ func _on_start_pressed() -> void:
 	else:
 		show_popup("Names must be \n least 4-8 characters long",2)
 		
-func _on_htp_pressed() -> void:
+func _on_controls_pressed() -> void:
+	modal.visible = true
 	print("opt")
+
+
+func _on_button_pressed() -> void:
+	print("not vis")
+	modal.visible = false
+
+
+func _on_button_toggled(toggled_on: bool) -> void:
+	modal.visible = false
