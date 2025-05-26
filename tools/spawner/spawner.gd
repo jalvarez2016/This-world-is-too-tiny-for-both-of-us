@@ -26,7 +26,7 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	if get_children().size() != 2:
+	if get_children().size() < 2:
 		if set_tool == "health_pack":
 			tool = health_pack_scene.instantiate()
 			add_child(tool)
