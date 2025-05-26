@@ -2,12 +2,16 @@ extends Node3D
 @export var shootSound: AudioStreamPlayer3D
 @onready var bullet_scene = load("res://tools/gun/Bullet.tscn")
 @onready var bullet_spawn = $Marker3D
-@onready var root = get_tree().get_root().get_node("World")
+@onready var root = "world"
+
+
+@export var currentNode = null
 
 var triger = null
 var in_hand = false
 var group = null
 var rounds = 6
+
 @onready var round_mesh = [$Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet2, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet3, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet4, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet5, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet6, $Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine/Node3D/Bullet7]
 
 func _ready() -> void:
@@ -15,7 +19,10 @@ func _ready() -> void:
 	for i in range(rounds):
 		round_mesh[i].visible = true
 		
-
+func set_root(set_root):
+	print(set_root)
+	root = get_tree().get_root().get_node(set_root)
+	
 func _process(delta: float) -> void:
 	if in_hand and Input.is_action_just_pressed(triger) and rounds > 0:
 		round_mesh[rounds - 1].visible = false

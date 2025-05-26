@@ -238,6 +238,7 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		area.removeGun()
 		get_tool("gun",ammo)
 		gun_spot.add_child(set_tool)
+		set_tool.set_root("World")
 		set_tool.stop_animation()
 
 func drop_tool():
@@ -251,6 +252,7 @@ func drop_tool():
 		temp.gun_drop_set_up(ammo)
 		temp.transform = drop_spot.global_transform
 		root.add_child(temp)
+		root.set_root("world")
 		
 	elif current_tool == "sword":
 		set_tool.queue_free()

@@ -410,3 +410,4 @@ libraries = {
 [node name="spawner" parent="." instance=ExtResource("5_oke0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.49763, 22.7428, -1.84812)
 set_tool = "gun"
+root = "starting_scene"

@@ -3,11 +3,10 @@ extends Control
 
 @onready var player_one_input = $VBoxContainer2/TextConatiner/Player1Input
 @onready var player_two_input = $VBoxContainer2/TextConatiner/Player2Input
-@onready var start = $TextConatiner/start
+@onready var start = $VBoxContainer2/TextConatiner/start
 @onready var popup_warning = $VBoxContainer2/TextConatiner/warning
-@onready var timer = $TextConatiner/Timer
+@onready var timer = $VBoxContainer2/Timer
 @onready var modal = $modal
-@onready var modalText = $modal/modalWrap/CenterContainer/modalBox/VBoxContainer/modalText
 @onready var button = $modal/modalWrap/CenterContainer/modalBox/colorwrapper/Button
 
 func _ready() -> void:

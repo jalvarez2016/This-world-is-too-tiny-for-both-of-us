@@ -446,7 +446,6 @@ item/4/preview = SubResource("ImageTexture_3nx2m")
 [sub_resource type="SphereMesh" id="SphereMesh_f24yl"]
 
 [node name="Victory" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0564051, 0)
 script = ExtResource("1_v31sk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

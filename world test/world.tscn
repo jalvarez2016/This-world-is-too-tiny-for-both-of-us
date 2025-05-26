@@ -388,10 +388,8 @@ script = ExtResource("2_c3umw")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="CameraTimer" type="Timer" parent="MainCamera"]
-one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("BoxMesh_4kpw4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
@@ -563,38 +561,47 @@ transform = Transform3D(1, 0, 0, 0, 0.999897, -0.0143461, 0, 0.0143461, 0.999897
 [node name="gun" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.5341, 0.715668, -71.3901)
 set_tool = "gun"
+root = "World"
 
 [node name="gun2" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.42177, 0.173178, 12.0702)
 set_tool = "gun"
+root = "World"
 
 [node name="sword" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0067, -0.182754, -12.7376)
 set_tool = "sword"
+root = "world"
 
 [node name="sword2" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8832, -0.732924, -51.0834)
 set_tool = "sword"
+root = "world"
 
 [node name="health_pack" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4571, 3.56342, -20.8393)
 set_tool = "health_pack"
+root = "world"
 
 [node name="health_pack2" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5305, -0.476244, -33.1933)
 set_tool = "health_pack"
+root = "world"
 
 [node name="health_pack3" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7671, -0.891014, -62.102)
 set_tool = "health_pack"
+root = "world"
 
 [node name="health_pack4" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.9168, 0.00356746, 0.248646)
 set_tool = "health_pack"
+root = "world"
 
 [node name="ammo_box" parent="Node3D" instance=ExtResource("12_urt7q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4124, -0.410208, -28.5907)
 set_tool = "ammo_box"
+root = "world"
 
 [connection signal="timeout" from="MainCamera/CameraTimer" to="MainCamera" method="_on_timer_timeout"]
 [connection signal="timeout" from="HealthPackSpawnTimer" to="HealthPackSpawn" method="_on_health_pack_spawn_timer_timeout"]

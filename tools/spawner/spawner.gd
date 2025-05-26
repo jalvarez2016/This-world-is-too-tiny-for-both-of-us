@@ -4,24 +4,30 @@ extends Node3D
 @onready var sword_scene = load("res://tools/sword/sword.tscn")
 @onready var ammo_box = load("res://tools/ammo_box/ammo_box.tscn")
 @export var set_tool = ""
-
+@export var root :String
 var tool = null;
 
 func _ready() -> void:
 	if set_tool == "gun":
 		tool = gun_scene.instantiate()
 		tool.scale = Vector3(4,4,4)
+		add_child(tool)
+		print(root)
+		tool.set_root(root)
 	elif set_tool == "health_pack":
 		tool = health_pack_scene.instantiate()
 		$Timer.start()
+		add_child(tool)
 	elif set_tool == "sword":
 		tool = sword_scene.instantiate()
 		tool.scale = Vector3(4,4,4)
+		add_child(tool)
 	elif set_tool == "ammo_box":
 		tool = ammo_box.instantiate()
 		tool.scale = Vector3(4,4,4)
 		$Timer.start()
-	add_child(tool)
+		add_child(tool)
+	
 
 
 
