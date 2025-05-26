@@ -47,7 +47,7 @@ func _on_controls_pressed() -> void:
 
 
 func _on_button_pressed() -> void:
-	print("pressed")
+	print("not vis")
 	modal.visible = false
 
 
