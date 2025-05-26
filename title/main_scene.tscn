@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl1qjf5v4y5eg"]
+[gd_scene load_steps=6 format=3 uid="uid://bl1qjf5v4y5eg"]
 
 [ext_resource type="Script" uid="uid://bk5jr68ol852o" path="res://title/main_scene.gd" id="1_tewts"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6td76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tewts"]
 bg_color = Color(0.903431, 0.346688, 0.784597, 1)
@@ -61,7 +63,75 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tewts")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="modal" type="CanvasLayer" parent="."]
+
+[node name="modalWrap" type="Control" parent="modal"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="modal/modalWrap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="modalBox" type="Panel" parent="modal/modalWrap/CenterContainer"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+
+[node name="colorwrapper" type="ColorRect" parent="modal/modalWrap/CenterContainer/modalBox"]
+layout_mode = 2
+offset_left = 300.0
+offset_top = 150.0
+offset_right = 300.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="modal/modalWrap/CenterContainer/modalBox/colorwrapper"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+offset_left = -144.0
+offset_top = -72.0
+offset_right = 183.0
+offset_bottom = 110.0
+theme_override_font_sizes/bold_italics_font_size = 12
+text = "Player 1                                   Player 2
+------------------                       ------------------
+W, A, S, D  - Move             ↑, ←, ↓, → - Move
+Q -  Jump                            B  - Jump
+T  - Attack                          N  - Attack
+Y   - Drop                           M  - Drop
+"
+fit_content = true
+autowrap_mode = 2
+context_menu_enabled = true
+
+[node name="Button" type="Button" parent="modal/modalWrap/CenterContainer/modalBox/colorwrapper"]
+y_sort_enabled = true
+custom_minimum_size = Vector2(30, 30)
+offset_left = 260.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = -119.0
+button_mask = 2
+text = "X"
+flat = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,22 +139,26 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -94.5
-offset_top = -109.0
+offset_top = -130.5
 offset_right = 94.5
-offset_bottom = 109.0
+offset_bottom = 130.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextConatiner" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="warning" type="Label" parent="VBoxContainer"]
+[node name="warning" type="Label" parent="VBoxContainer2/TextConatiner"]
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1Input" type="LineEdit" parent="VBoxContainer"]
+[node name="Player1Input" type="LineEdit" parent="VBoxContainer2/TextConatiner"]
+material = SubResource("ShaderMaterial_6td76")
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Player1Input"]
+[node name="Label" type="Label" parent="VBoxContainer2/TextConatiner/Player1Input"]
 layout_mode = 2
 offset_left = -73.5
 offset_top = 3.0
@@ -92,18 +166,19 @@ offset_right = 12.5
 offset_bottom = 28.0
 text = "PLAYER1:"
 
-[node name="Player2Input" type="LineEdit" parent="VBoxContainer"]
+[node name="Player2Input" type="LineEdit" parent="VBoxContainer2/TextConatiner"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/Player2Input"]
+[node name="Label2" type="Label" parent="VBoxContainer2/TextConatiner/Player2Input"]
 layout_mode = 2
 offset_left = -74.5
 offset_top = 8.0
 offset_right = 114.5
 offset_bottom = 31.0
-text = "PLAYER2:"
+text = "PLAYER2:
+"
 
-[node name="start" type="Button" parent="VBoxContainer"]
+[node name="start" type="Button" parent="VBoxContainer2/TextConatiner"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -113,7 +188,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ynn50")
 text = "START GAME
 "
 
-[node name="controls" type="Button" parent="VBoxContainer"]
+[node name="controls" type="Button" parent="VBoxContainer2/TextConatiner"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
@@ -123,7 +198,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ynn50")
 text = "CONTROLS
 "
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="VBoxContainer2"]
 
-[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/controls" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="modal/modalWrap/CenterContainer/modalBox/colorwrapper/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="modal/modalWrap/CenterContainer/modalBox/colorwrapper/Button" to="." method="_on_button_toggled"]
+[connection signal="pressed" from="VBoxContainer2/TextConatiner/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer2/TextConatiner/controls" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer2/TextConatiner/controls" to="." method="_on_controls_pressed"]
