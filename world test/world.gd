@@ -34,6 +34,7 @@ func _ready() -> void:
 	player_one.add_to_group("player_two")
 	player_two.transform = player_two_spown.global_transform
 	player_two.scale = Vector3(4,4,4)
+	player_two.change_color()
 	add_child(player_two)
 	camera_setup_timer.start()
 	

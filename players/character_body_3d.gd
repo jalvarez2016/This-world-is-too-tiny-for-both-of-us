@@ -48,6 +48,18 @@ var last_left_tap_time = 0
 var last_up_tap_time = 0
 var last_down_tap_time = 0
 
+
+func change_color():
+	var body_material = StandardMaterial3D.new()
+	var hat_material = StandardMaterial3D.new()
+	
+	body_material.albedo_color = Color(1.0, 0.0, 0.0)
+	hat_material.albedo_color = Color(0.108, 0.43, 0.768)
+	
+	$BasicDude/Armature/Skeleton3D/Cube_004.set_surface_override_material(3,body_material)
+	$BasicDude/Armature/Skeleton3D/Cube_004.set_surface_override_material(0,hat_material)
+
+
 func check_if_runging():
 	if Input.is_action_pressed(player_keys[0]):
 		if Input.is_action_pressed(player_keys[0]):
@@ -107,6 +119,7 @@ func _physics_process(delta: float) -> void:
 		check_if_runging()
 		
 		if Input.is_action_just_pressed(player_keys[5]) and current_tool != "gun":
+			print(group)
 			state_machine.travel("Punch")
 			left_fist.setStatus("punching")
 			right_fist.setStatus("punching")
@@ -141,16 +154,15 @@ func set_player_keys(player_keys_list, fist_group, enemy_fist_group):
 	group = fist_group
 
 func heal():
-	if health <= 84:
-			if health + 16 > 100:
-				health = 100
-			else:
-				health += 16
-			current_scale += .4
-			scale = Vector3(current_scale,current_scale,current_scale)
-			audioController.healSound.play()
+	if health + 16 > 100:
+		health = 100
 	else:
-		health = health
+		health += 16
+	current_scale += .4
+	scale = Vector3(current_scale,current_scale,current_scale)
+	audioController.healSound.play()
+		
+	emit_signal("health_changed", health)
 
 func damge(health_damge, scale_damage):
 	audioController.hurtSound.play()
@@ -165,9 +177,15 @@ func damge(health_damge, scale_damage):
 		SPEED = 4.0
 		jump_force = 4
 	scale = Vector3(current_scale,current_scale,current_scale)
+	
 	if health <= 0 or current_scale <= 0.3:
-		print("scale is", scale)
-		PlayerInfo.victory_scale = Vector3(current_scale,current_scale,current_scale)
+		if group == "player_one_fist":
+			PlayerInfo.player1_scale = current_scale
+			PlayerInfo.victor = "player two"
+		else:
+			PlayerInfo.player2_scale = current_scale
+			PlayerInfo.victor = "player one"
+		
 		state_machine.travel("Defeat")
 		$Timer2.start()
 		

@@ -15,7 +15,6 @@ material = SubResource("StandardMaterial3D_81fhr")
 radius = 0.556592
 
 [node name="HealthPack" type="RigidBody3D" groups=["health_pack"]]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 mass = 0.2
 gravity_scale = 0.3
 script = ExtResource("1_dx2s5")

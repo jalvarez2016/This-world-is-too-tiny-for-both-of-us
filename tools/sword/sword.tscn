@@ -28,6 +28,16 @@ size = Vector3(0.1, 0.648926, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_736ct"]
 size = Vector3(0.0464233, 0.665527, 0.0483765)
 
+[sub_resource type="Animation" id="Animation_3ck5h"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_ey35l"]
 resource_name = "up_down"
 length = 3.0
@@ -46,16 +56,6 @@ tracks/1/path = NodePath("Node3D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0.0666667, 1, -0.202244, -0.245209, 1.02306e-06, 1.5, 1, -0.202244, 0.418866, 1.02306e-06)
-
-[sub_resource type="Animation" id="Animation_3ck5h"]
-length = 0.001
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1ve5"]
 _data = {
