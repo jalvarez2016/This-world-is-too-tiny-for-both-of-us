@@ -214,11 +214,13 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		area.removeSword()
 		get_tool("sword")
 		$BasicDude/Armature/Skeleton3D/LeftHand/Node3D/Area3D2/CollisionShape3D.add_child(set_tool)
+		set_tool.stop_animation()
 	elif current_tool == null and area.is_in_group("gun") and area.get_status() == "pickable":
 		var ammo = area.get_data()
 		area.removeGun()
 		get_tool("gun",ammo)
 		gun_spot.add_child(set_tool)
+		set_tool.stop_animation()
 
 func drop_tool():
 	audioController.equipSound.play()
