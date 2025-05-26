@@ -10,6 +10,16 @@
 radius = 0.344108
 height = 1.19667
 
+[sub_resource type="Animation" id="Animation_beb8j"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun_Pistol2/Gun_Pistol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_o4une"]
 resource_name = "up_down"
 length = 4.0
@@ -36,16 +46,6 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0.0666667, 1, 0, 0, 0, 1, 1.93333, 1, 0, 1, 0, -4.37114e-08, 3.1, 1, 0, 0.713105, 0, 0.701057)
 
-[sub_resource type="Animation" id="Animation_beb8j"]
-length = 0.001
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Gun_Pistol2/Gun_Pistol")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mac8t"]
 _data = {
 &"RESET": SubResource("Animation_beb8j"),
@@ -68,9 +68,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.126651, 0.691271)
 
 [node name="Gun_Pistol2" parent="." instance=ExtResource("1_em836")]
 transform = Transform3D(0.997019, 0, 0, 0, 0.997019, 0, 0, 0, 0.997019, 0, 0.00455001, 0.00716665)
-
-[node name="Gun_Pistol" parent="Gun_Pistol2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Node3D" type="Node3D" parent="Gun_Pistol2/Gun_Pistol/Gun_Pistol_Magazine" index="0"]
 transform = Transform3D(1.29618, 0, -0.0995528, 0, 1.3, 0, 0.0995528, 0, 1.29618, 0.00100822, 0.0644364, -0.317668)

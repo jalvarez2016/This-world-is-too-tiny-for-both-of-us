@@ -9,6 +9,7 @@ extends Control
 @onready var modal = $modal
 @onready var modalText = $modal/modalWrap/CenterContainer/modalBox/VBoxContainer/modalText
 @onready var button = $modal/modalWrap/CenterContainer/modalBox/colorwrapper/Button
+
 func _ready() -> void:
 	print(button)  # Should print the node, NOT null
 	modal.visible = false

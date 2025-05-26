@@ -2,6 +2,7 @@ extends RigidBody3D
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
+	print("heal")
 	if area.is_in_group("player"):
 		area.heal()
 		queue_free()

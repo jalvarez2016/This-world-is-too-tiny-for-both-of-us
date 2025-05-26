@@ -242,5 +242,5 @@ This World Is Too Tiny For Both Of Us"
 [connection signal="pressed" from="modal/modalWrap/CenterContainer/modalBox/colorwrapper/Button" to="." method="_on_button_pressed"]
 [connection signal="toggled" from="modal/modalWrap/CenterContainer/modalBox/colorwrapper/Button" to="." method="_on_button_toggled"]
 [connection signal="pressed" from="VBoxContainer2/TextConatiner/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer2/TextConatiner/controls" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer2/TextConatiner/controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="VBoxContainer2/TextConatiner/controls" to="." method="_on_options_pressed"]
