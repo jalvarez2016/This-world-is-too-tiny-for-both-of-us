@@ -38,6 +38,7 @@ folder_colors={}
 player_two_fist=""
 player_one_fist=""
 health_pack=""
+env_damage=""
 tool=""
 
 [input]

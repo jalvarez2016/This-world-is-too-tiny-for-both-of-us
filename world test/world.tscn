@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://crtx2bug0v0ab"]
+[gd_scene load_steps=52 format=4 uid="uid://crtx2bug0v0ab"]
 
 [ext_resource type="Script" uid="uid://bvmsjjvovdcq" path="res://world test/world.gd" id="1_2hu7o"]
 [ext_resource type="Script" uid="uid://jti6ts8aejho" path="res://world test/health_pack_spawn.gd" id="2_2hu7o"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b2fvaiyt51vwy" path="res://tools/gun/Gun.tscn" id="8_ya54j"]
 [ext_resource type="PackedScene" uid="uid://kw8g7x5wmxas" path="res://tools/sword/sword.tscn" id="9_fdvnt"]
 [ext_resource type="PackedScene" uid="uid://wo4vkr03frnx" path="res://tools/ammo_box/ammo_box.tscn" id="10_urt7q"]
+[ext_resource type="PackedScene" uid="uid://c6ya83ic02pqf" path="res://Environmental-Extras/spike.tscn" id="11_fdvnt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_phm66"]
 sky_top_color = Color(0.548891, 0.150798, 0.167119, 1)
@@ -18,12 +19,12 @@ sky_curve = 1e-05
 ground_bottom_color = Color(0.131837, 0.182214, 0.216546, 1)
 ground_horizon_color = Color(0.807843, 0.682353, 0.854902, 1)
 
-[sub_resource type="Sky" id="Sky_k6dfu"]
+[sub_resource type="Sky" id="Sky_ya54j"]
 sky_material = SubResource("ProceduralSkyMaterial_phm66")
 
 [sub_resource type="Environment" id="Environment_uyxuf"]
 background_mode = 2
-sky = SubResource("Sky_k6dfu")
+sky = SubResource("Sky_ya54j")
 
 [sub_resource type="BoxMesh" id="BoxMesh_4kpw4"]
 size = Vector3(100, 0.2, 100)
@@ -51,7 +52,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_wgfor"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_fdvnt"]
 resource_name = "Wall_Decorated_Cube_16104"
 _surfaces = [{
 "aabb": AABB(-2, 0, -0.25, 4, 4, 0.913068),
@@ -79,7 +80,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_elmh1"]
+[sub_resource type="ImageTexture" id="ImageTexture_w7xrk"]
 image = SubResource("Image_ya54j")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_te24s"]
@@ -104,7 +105,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_gje6e"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_mst4r"]
 resource_name = "Wall_Doorway_Cube_16097"
 _surfaces = [{
 "aabb": AABB(-2, 0, -0.25, 4, 4, 0.530001),
@@ -131,7 +132,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_ixqkm"]
+[sub_resource type="ImageTexture" id="ImageTexture_8dvd2"]
 image = SubResource("Image_fdvnt")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_85hau"]
@@ -157,7 +158,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_cihws"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ni345"]
 resource_name = "Wall_Target_Cube_16093"
 _surfaces = [{
 "aabb": AABB(-2, 0, -0.25, 4, 4, 0.991298),
@@ -185,7 +186,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_nearc"]
+[sub_resource type="ImageTexture" id="ImageTexture_ywkte"]
 image = SubResource("Image_urt7q")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cghnw"]
@@ -211,7 +212,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_qvvni"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_i5v1x"]
 resource_name = "Wall_Window_Closed_Cube_16096"
 _surfaces = [{
 "aabb": AABB(-2, 0, -0.25, 4, 4, 0.530001),
@@ -239,7 +240,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_jqve5"]
+[sub_resource type="ImageTexture" id="ImageTexture_oxe01"]
 image = SubResource("Image_w7xrk")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3eyek"]
@@ -265,7 +266,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_w5wqn"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_44pf3"]
 resource_name = "Wall_Window_Open_Cube_16108"
 _surfaces = [{
 "aabb": AABB(-2, 0, -0.25, 4, 4, 0.530001),
@@ -293,7 +294,7 @@ data = {
 "width": 64
 }
 
-[sub_resource type="ImageTexture" id="ImageTexture_3nx2m"]
+[sub_resource type="ImageTexture" id="ImageTexture_o4or7"]
 image = SubResource("Image_mst4r")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f56ht"]
@@ -301,45 +302,45 @@ data = PackedVector3Array(-2, 1, -0.1362, -2, 0.9, 0.1362, -2, 0.9, -0.1362, -2,
 
 [sub_resource type="MeshLibrary" id="MeshLibrary_k6dfu"]
 item/0/name = "Wall_Decorated"
-item/0/mesh = SubResource("ArrayMesh_wgfor")
+item/0/mesh = SubResource("ArrayMesh_fdvnt")
 item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/0/mesh_cast_shadow = 1
 item/0/shapes = [SubResource("ConcavePolygonShape3D_te24s"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/0/navigation_layers = 1
-item/0/preview = SubResource("ImageTexture_elmh1")
+item/0/preview = SubResource("ImageTexture_w7xrk")
 item/1/name = "Wall_Doorway"
-item/1/mesh = SubResource("ArrayMesh_gje6e")
+item/1/mesh = SubResource("ArrayMesh_mst4r")
 item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/1/mesh_cast_shadow = 1
 item/1/shapes = [SubResource("ConcavePolygonShape3D_85hau"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/1/navigation_layers = 1
-item/1/preview = SubResource("ImageTexture_ixqkm")
+item/1/preview = SubResource("ImageTexture_8dvd2")
 item/2/name = "Wall_Target"
-item/2/mesh = SubResource("ArrayMesh_cihws")
+item/2/mesh = SubResource("ArrayMesh_ni345")
 item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/2/mesh_cast_shadow = 1
 item/2/shapes = [SubResource("ConcavePolygonShape3D_cghnw"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/2/navigation_layers = 1
-item/2/preview = SubResource("ImageTexture_nearc")
+item/2/preview = SubResource("ImageTexture_ywkte")
 item/3/name = "Wall_Window_Closed"
-item/3/mesh = SubResource("ArrayMesh_qvvni")
+item/3/mesh = SubResource("ArrayMesh_i5v1x")
 item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/mesh_cast_shadow = 1
 item/3/shapes = [SubResource("ConcavePolygonShape3D_3eyek"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/navigation_layers = 1
-item/3/preview = SubResource("ImageTexture_jqve5")
+item/3/preview = SubResource("ImageTexture_oxe01")
 item/4/name = "Wall_Window_Open"
-item/4/mesh = SubResource("ArrayMesh_w5wqn")
+item/4/mesh = SubResource("ArrayMesh_44pf3")
 item/4/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/4/mesh_cast_shadow = 1
 item/4/shapes = [SubResource("ConcavePolygonShape3D_f56ht"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/4/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/4/navigation_layers = 1
-item/4/preview = SubResource("ImageTexture_3nx2m")
+item/4/preview = SubResource("ImageTexture_o4or7")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5ya7"]
 bg_color = Color(0.988066, 0.00905436, 0.448837, 1)
@@ -532,10 +533,39 @@ text = "Player 2
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -3.29976, 2.51409, -0.751641)
 
 [node name="Sword" parent="." instance=ExtResource("9_fdvnt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35133, 2.26105, -3.44396)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.35133, 2.26105, -3.44396)
 
 [node name="Ammo_box" parent="." instance=ExtResource("10_urt7q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8058, 2, -1.77539)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -11.8058, 2, -1.77539)
+
+[node name="Spikes" type="Node3D" parent="."]
+
+[node name="Spike" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 4, 42)
+
+[node name="Spike2" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 4, 42)
+
+[node name="Spike3" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 4, -42)
+
+[node name="Spike4" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 4, -42)
+
+[node name="Spike5" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 4, -12)
+
+[node name="Spike6" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88956, 4, 30.1231)
+
+[node name="Spike7" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.1104, 4, -2.87687)
+
+[node name="Spike8" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8896, 4, 8.12313)
+
+[node name="Spike9" parent="Spikes" instance=ExtResource("11_fdvnt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8896, 4, 9.12313)
 
 [connection signal="timeout" from="MainCamera/CameraTimer" to="MainCamera" method="_on_timer_timeout"]
 [connection signal="timeout" from="HealthPackSpawnTimer" to="HealthPackSpawn" method="_on_health_pack_spawn_timer_timeout"]
