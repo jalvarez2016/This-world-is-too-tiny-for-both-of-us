@@ -166,10 +166,10 @@ func damge(health_damge, scale_damage):
 		jump_force = 4
 	scale = Vector3(current_scale,current_scale,current_scale)
 	if health <= 0 or current_scale <= 0.3:
+		print("scale is", scale)
+		PlayerInfo.victory_scale = Vector3(current_scale,current_scale,current_scale)
 		state_machine.travel("Defeat")
 		$Timer2.start()
-		# change to victory scene
-		#get_tree().change_scene_to_file("res://world test/main_scene.tscn")
 		
 func get_tool(name, ammo = null):
 	audioController.equipSound.play()

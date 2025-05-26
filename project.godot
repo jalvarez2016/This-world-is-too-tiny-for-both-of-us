@@ -29,6 +29,10 @@ window/size/mode=2
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
+[file_customization]
+
+folder_colors={}
+
 [global_group]
 
 player_two_fist=""
